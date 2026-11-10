@@ -1,1 +1,127 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"><title>FDE FieldOps Academy v2.5 — Data Engineer to Forward Deployed Engineer</title><meta name="theme-color" content="#090D16"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="FDE Academy"><link rel="manifest" href="./manifest.json"><link rel="icon" type="image/svg+xml" href="./assets/icon.svg"><link rel="apple-touch-icon" href="./assets/icon.svg"><link rel="stylesheet" href="./css/styles.css"></head><body><header><div class="brand"><span>⚡ FDE FIELDOPS ACADEMY</span><span class="badge">v2.5 PWA</span></div><nav class="nav-tabs"><button class="tab-btn active" onclick="switchTab('pillars',this)">1. 8 Curriculum Pillars (16 Labs)</button><button class="tab-btn" onclick="switchTab('warroom',this)">2. War Room Scenarios (5)</button><button class="tab-btn" onclick="switchTab('workbenches',this)">3. Practice Workbenches (5)</button><button class="tab-btn" onclick="switchTab('interview',this)">4. 150 Interview Drill Bank</button><button class="tab-btn" onclick="switchTab('resources',this)">5. 2026 Video & Doc Vault (42)</button></nav><div class="user-pill" onclick="openLogin()"><span id="opNameDisplay">👤 Operator: Gavish Gothria</span><span class="badge" id="opScoreDisplay">0 XP</span></div></header><main><div class="kpi-bar"><div class="kpi"><div style="font-size:.75rem;color:var(--muted)">ACTIVE OPERATOR</div><div class="kpi-val" id="kpiOperator">Gavish Gothria</div><div style="font-size:.76rem;color:var(--cyan)" id="kpiTrack">Track: AI & Ontology FDE</div></div><div class="kpi"><div style="font-size:.75rem;color:var(--muted)">PILLAR EXERCISES PASSED</div><div class="kpi-val" id="kpiExercises">0 / 16</div><div style="font-size:.76rem;color:var(--emerald)">100% Verified Determinism</div></div><div class="kpi"><div style="font-size:.75rem;color:var(--muted)">WAR ROOM SIMULATIONS</div><div class="kpi-val" id="kpiScenarios">0 / 5</div><div style="font-size:.76rem;color:var(--muted)">15 Multi-Stage Decisions</div></div><div class="kpi"><div style="font-size:.75rem;color:var(--muted)">INTERVIEW BANK MASTERED</div><div class="kpi-val" id="kpiQuestions">0 / 150</div><div style="font-size:.76rem;color:var(--amber)">16 Core AI/FDE Domains</div></div></div><section id="tab-pillars" class="tab-pane"><div id="pillarsContainer" class="grid g2"></div></section><section id="tab-warroom" class="tab-pane hidden"><div id="warroomContainer" class="grid g2"></div></section><section id="tab-workbenches" class="tab-pane hidden"><div id="workbenchesContainer" class="grid g2"></div></section><section id="tab-interview" class="tab-pane hidden"><div class="card" style="margin-bottom:18px"><div style="display:flex;gap:12px;flex-wrap:wrap"><input id="qSearch" placeholder="Search 150 interview questions (e.g. GraphRAG, MCP, P99, Ontology, Iceberg, LangGraph)..." oninput="renderQuestions()" style="flex:2"><select id="qCat" onchange="renderQuestions()" style="flex:1"><option value="ALL">All 16 PDF Categories (150 Qs)</option></select></div></div><div id="questionsContainer" class="grid"></div></section><section id="tab-resources" class="tab-pane hidden"><div id="resourcesContainer" class="grid g3"></div></section></main><div class="modal-backdrop" id="loginModal"><div class="modal"><h3>🔐 Operator Authentication & Profile</h3><p style="font-size:.85rem;color:var(--muted)">Your progress, XP, and solved exercises are saved per operator callsign in local storage.</p><label style="font-size:.8rem;color:var(--muted)">Operator Name / Callsign</label><input id="loginNameInput" placeholder="e.g. Gavish Gothria"><label style="font-size:.8rem;color:var(--muted)">Data Engineering Background</label><select id="loginRoleInput"><option>Senior Spark / Iceberg Data Engineer</option><option>Snowflake / dbt Analytics Engineer</option><option>Kafka / Flink Streaming Engineer</option><option>AI / ML Platform Data Engineer</option></select><label style="font-size:.8rem;color:var(--muted)">Target FDE Specialization</label><select id="loginTrackInput"><option>Palantir / Ontology & Operational Apps FDE</option><option>Enterprise Agentic AI & RAG FDE (MCP / LangGraph)</option><option>Defense & Air-Gapped K8s Field Engineer</option></select><div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px"><button class="btn btn-outline" onclick="closeLogin()">Cancel</button><button class="btn" onclick="saveLogin()">Initialize Session</button></div></div></div><script src="./js/data.js"></script><script src="./js/app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <title>FDE FieldOps Academy v3.0 — Data Engineer to Forward Deployed Engineer</title>
+  <meta name="theme-color" content="#090D16">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="FDE Academy">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/svg+xml" href="./assets/icon.svg">
+  <link rel="apple-touch-icon" href="./assets/icon.svg">
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <span>⚡ FDE FIELDOPS ACADEMY</span>
+      <span class="badge">v3.0 GUIDED PWA</span>
+    </div>
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-tab="roadmap" onclick="switchTab('roadmap', this)">🗺️ 0. Guided Roadmap (Next Steps)</button>
+      <button class="tab-btn" data-tab="pillars" onclick="switchTab('pillars', this)">🏛️ 1. 8 Curriculum Pillars (16 Labs)</button>
+      <button class="tab-btn" data-tab="warroom" onclick="switchTab('warroom', this)">⚔️ 2. War Room Scenarios (5)</button>
+      <button class="tab-btn" data-tab="workbenches" onclick="switchTab('workbenches', this)">🧪 3. Practice Workbenches (8)</button>
+      <button class="tab-btn" data-tab="interview" onclick="switchTab('interview', this)">🎯 4. 150 Interview Drill Bank</button>
+      <button class="tab-btn" data-tab="resources" onclick="switchTab('resources', this)">📺 5. 2026 Video &amp; Doc Vault (42)</button>
+    </nav>
+    <div class="user-pill" onclick="openLogin()">
+      <span id="opNameDisplay">👤 Gavish Gothria</span>
+      <span class="badge" id="opScoreDisplay">0 XP</span>
+    </div>
+  </header>
+
+  <main>
+    <div id="nextStepBanner" class="next-step-banner"></div>
+
+    <div class="kpi-bar">
+      <div class="kpi">
+        <div style="font-size:0.74rem;color:var(--muted)">ACTIVE OPERATOR</div>
+        <div class="kpi-val" id="kpiOperator">Gavish Gothria</div>
+        <div style="font-size:0.75rem;color:var(--cyan)" id="kpiTrack">Palantir / Ontology &amp; Operational Apps FDE</div>
+      </div>
+      <div class="kpi">
+        <div style="font-size:0.74rem;color:var(--muted)">PILLAR EXERCISES PASSED</div>
+        <div class="kpi-val" id="kpiExercises">0 / 16</div>
+        <div style="font-size:0.75rem;color:var(--emerald)">8 Deep Architecture Blueprints</div>
+      </div>
+      <div class="kpi">
+        <div style="font-size:0.74rem;color:var(--muted)">WAR ROOM SIMULATIONS</div>
+        <div class="kpi-val" id="kpiScenarios">0 / 5</div>
+        <div style="font-size:0.75rem;color:var(--muted)">15 Multi-Stage Field Crises</div>
+      </div>
+      <div class="kpi">
+        <div style="font-size:0.74rem;color:var(--muted)">INTERVIEW BANK MASTERED</div>
+        <div class="kpi-val" id="kpiQuestions">0 / 150</div>
+        <div style="font-size:0.75rem;color:var(--amber)">16 Core AI &amp; FDE Domains</div>
+      </div>
+    </div>
+
+    <section id="tab-roadmap" class="tab-pane">
+      <div id="roadmapContainer" class="grid"></div>
+    </section>
+
+    <section id="tab-pillars" class="tab-pane hidden">
+      <div id="pillarsContainer" class="grid g2"></div>
+    </section>
+
+    <section id="tab-warroom" class="tab-pane hidden">
+      <div id="warroomContainer" class="grid g2"></div>
+    </section>
+
+    <section id="tab-workbenches" class="tab-pane hidden">
+      <div id="workbenchesContainer" class="grid g2"></div>
+    </section>
+
+    <section id="tab-interview" class="tab-pane hidden">
+      <div class="card" style="margin-bottom:18px">
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+          <input id="qSearch" placeholder="Search 150 distinct interview questions (e.g. FlashAttention, GraphRAG, MCP, PagedAttention, RRF, Iceberg, LangGraph)..." oninput="renderQuestions()" style="flex:2;min-width:240px">
+          <select id="qCat" onchange="renderQuestions()" style="flex:1;min-width:220px">
+            <option value="ALL">All 16 PDF Categories (150 Questions)</option>
+          </select>
+          <span class="badge" id="qCountBadge">Showing 150 of 150 Questions</span>
+          <button class="btn btn-sm btn-outline" onclick="expandAllQuestions(true)">Expand All</button>
+          <button class="btn btn-sm btn-outline" onclick="expandAllQuestions(false)">Collapse All</button>
+        </div>
+      </div>
+      <div id="questionsContainer" class="grid"></div>
+    </section>
+
+    <section id="tab-resources" class="tab-pane hidden">
+      <div id="resourcesContainer" class="grid g3"></div>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="loginModal">
+    <div class="modal">
+      <h3>🔐 Operator Authentication &amp; Profile</h3>
+      <p style="font-size:0.85rem;color:var(--muted)">Your Guided Roadmap steps, XP, solved exercises, and mastered interview questions persist per operator callsign in local storage.</p>
+      <label style="font-size:0.8rem;color:var(--muted)">Operator Name / Callsign</label>
+      <input id="loginNameInput" placeholder="e.g. Gavish Gothria">
+      <label style="font-size:0.8rem;color:var(--muted)">Data Engineering Background</label>
+      <select id="loginRoleInput">
+        <option>Senior Spark / Iceberg Data Engineer</option>
+        <option>Snowflake / dbt Analytics Engineer</option>
+        <option>Kafka / Flink Streaming Engineer</option>
+        <option>AI / ML Platform Data Engineer</option>
+      </select>
+      <label style="font-size:0.8rem;color:var(--muted)">Target FDE Specialization</label>
+      <select id="loginTrackInput">
+        <option>Palantir / Ontology &amp; Operational Apps FDE</option>
+        <option>Enterprise Agentic AI &amp; RAG FDE (MCP / LangGraph)</option>
+        <option>Defense &amp; Air-Gapped K8s Field Engineer</option>
+      </select>
+      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px">
+        <button class="btn btn-outline" onclick="closeLogin()">Cancel</button>
+        <button class="btn" onclick="saveLogin()">Initialize Session</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/data.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>
