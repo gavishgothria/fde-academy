@@ -1,0 +1,17 @@
+{
+  "name": "FDE FieldOps Academy v2.5",
+  "short_name": "FDE Academy",
+  "description": "Data Engineer to Forward Deployed & Agentic AI Engineer Simulator",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#090D16",
+  "theme_color": "#090D16",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
